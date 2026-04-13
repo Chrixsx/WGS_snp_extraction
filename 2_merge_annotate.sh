@@ -20,7 +20,6 @@ export merged_vcf="/vast/projects/Epilepsy_Metabolites/data/WGS_SNP/GENESTEPS_co
 export plink_dir="/vast/projects/Epilepsy_Metabolites/data/WGS_SNP/GENESTEPS_cohort/3_plink"
 
 
-
 module load bcftools
 
 
@@ -39,12 +38,6 @@ bcftools annotate --no-version --threads 4 -a "$dbsnp_file" -c ID $merged_vcf/ge
   bcftools annotate --no-version --threads 4 --set-id +'%CHROM\_%POS' | \
   bcftools view --no-version --threads 4 --output-type z --write-index=tbi --output $merged_vcf/genesteps_multisamples_annotated_hg38.vcf.gz
 
-
-
-# Check if file is truncated 
-# [E::vcf_parse_format_check7] Number of columns at chr9:138121868 does not match the number of samples (83 vs 299)
-# Error: VCF parse error
-# [E::vcf_parse_format_check7] Number of columns at chr9:137967716 does not match the number of samples (277 vs 299)
 
 
 # Step 3: Convert to vcf to plink
